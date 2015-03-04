@@ -1,4 +1,5 @@
 #include "../h/main.h"
+#include "../h/movement.h"
 
 /// DO NOT DELETE THIS METHOD
 /// It is called every 1ms and e.g. can be used for implementing a
@@ -21,6 +22,7 @@ void hello_world() {
 
 TASK(OSEK_Main_Task) {
 	while (1) {
+		rotate();
 		hello_world();
 		int Helligkeit;
 		/* 500msec wait */
@@ -46,5 +48,4 @@ TASK(OSEK_Main_Task) {
 			}
 		}
 	}
-
 
