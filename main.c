@@ -1,4 +1,5 @@
 #include "../h/main.h"
+#include "../h/movement.h"
 
 /// DO NOT DELETE THIS METHOD
 /// It is called every 1ms and e.g. can be used for implementing a
@@ -29,22 +30,19 @@ TASK(OSEK_Main_Task) {
 
 		//nxt_motor_set_speed(NXT_PORT_B, 100, 0);
 		/* Helligkeit */
-		ecrobot_set_light_sensor_active(NXT_PORT_S3);
-		Helligkeit = ecrobot_get_light_sensor(NXT_PORT_S3);
+		ecrobot_set_light_sensor_active(NXT_PORT_S3); //light on
+		Helligkeit = ecrobot_get_light_sensor(NXT_PORT_S3); //show value
 
-		/*Erkennen Hindernis*/
+
 
 
 		/* Drive along line if black */
 		if(Helligkeit > 500){
 			nxt_motor_set_speed(NXT_PORT_B, 70, 0);
 			nxt_motor_set_speed(NXT_PORT_C, 70, 0);
-		}/*Stop if white*/ else{
-
-			nxt_motor_set_speed(NXT_PORT_B, 60, 0);
-			nxt_motor_set_speed(NXT_PORT_C, -60, 0);
+		}/*Turn if white*/ else{
+			rotate();
 			}
 		}
 	}
-
 
